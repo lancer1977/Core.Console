@@ -3,7 +3,7 @@ name: 1.0.0.$(rev:r)
 
 variables: 
 - name: Project.Path
-  value: '**\PolyhydraGames.Core.Console.csproj'
+  value: '**/PolyhydraGames.Core.Console.csproj'
 - name: Project.Config
   value: release
 trigger:
