@@ -17,20 +17,20 @@
  
     <ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" /> 
-        <PackageReference Include="PolyhydraGames.Core.Global" Version="1.0.3.4" />
-        <PackageReference Include="PolyhydraGames.Core.Interfaces" Version="2.0.0.36" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" /> 
+        <PackageReference Include="PolyhydraGames.Core.Global" Version="1.0.3.6" />
+        <PackageReference Include="PolyhydraGames.Core.Interfaces" Version="2.0.0.40" />
         <PackageReference Include="PolyhydraGames.Core.IOC" Version="1.0.1.1" />
-        <PackageReference Include="PolyhydraGames.Core.ReactiveUI" Version="1.0.0.44" />
-        <PackageReference Include="PolyhydraGames.Extensions" Version="2.1.1.49" />
-        <PackageReference Include="ReactiveUI" Version="19.5.41" />
+        <PackageReference Include="PolyhydraGames.Core.ReactiveUI" Version="1.0.0.46" />
+        <PackageReference Include="PolyhydraGames.Extensions" Version="2.1.1.51" />
+        <PackageReference Include="ReactiveUI" Version="20.1.1" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
-        <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.3" />
-        <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.3" />
+        <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.4" />
+        <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.4" />
         <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
 
-		<PackageReference Include="Spectre.Console" Version="0.48.0" />
-		<PackageReference Include="Spectre.Console.ImageSharp" Version="0.48.0" />
+		<PackageReference Include="Spectre.Console" Version="0.49.1" />
+		<PackageReference Include="Spectre.Console.ImageSharp" Version="0.49.1" />
     </ItemGroup>
  
 	<ItemGroup>
