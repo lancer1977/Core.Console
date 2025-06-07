@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using LurkHelper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using PolyhydraGames.Core.Console.System;

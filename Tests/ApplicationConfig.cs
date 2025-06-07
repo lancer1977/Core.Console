@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PolyhydraGames.Extensions;
 
+namespace LurkHelper;
+
 public class ApplicationConfig : IApplicationConfig
 {
     public ApplicationConfig(IConfiguration config)

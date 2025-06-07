@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+namespace LurkHelper;
+
 public static class Setup
 {
     public static (IServiceCollection, IConfiguration) AddConfig(this IServiceCollection services)

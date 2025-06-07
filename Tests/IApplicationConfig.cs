@@ -1,4 +1,6 @@
-﻿public interface IApplicationConfig
+﻿namespace LurkHelper;
+
+public interface IApplicationConfig
 {
     int ItterationDelay { get;  }
     int WindowSwapDelay { get;  }

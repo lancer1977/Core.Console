@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using PolyhydraGames.Core.Console.System;
 
+namespace LurkHelper;
 public class AppSwitcher : IHostedService
 {
     private readonly IApplicationConfig _config;
