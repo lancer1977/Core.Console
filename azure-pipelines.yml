@@ -3,7 +3,7 @@
 # Starter pipeline
 name: 1.0.2.$(rev:r)
 variables:
-  outputDir: '$(Build.ArtifactStagingDirectory)/publish'
+  outputDir: '$(Build.ArtifactStagingDirectory)/publish1'
   zipName: 'consoleapp.zip'
   githubRepo: 'lancer1977/Core.Console'  # Replace with your GitHub repo, e.g. myuser/myrepo
   releaseTag: 'v$(Build.BuildNumber)'
