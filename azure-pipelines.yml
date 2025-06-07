@@ -31,12 +31,21 @@ jobs:
       command: 'restore'
       projects: '$(projectpath)'
       feedRestore: '$(nuspecServiceId)'
+ 
+
   - task: DotNetCoreCLI@2
-    displayName: dotnet publish 
+    displayName: 'Publish Single EXE'
     inputs:
-      projects: '$(projectpath)'      
-      arguments: --configuration Release --output $(outputDir) -p:SelfContained=true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:IncludeNativeLibrariesForSelfExtract=true -r win-x64
-    # Change to win-x64 or osx-x64 if needed
+      command: 'publish'
+      projects: '$(Build.SourcesDirectory)/Tests/LurkHelper.csproj'
+      arguments: >
+        --configuration Release
+        --output $(outputDir)
+        -p:SelfContained=true
+        -p:PublishSingleFile=true
+        -p:PublishTrimmed=true
+        -p:IncludeNativeLibrariesForSelfExtract=true
+        -p:RuntimeIdentifier=win-x64
 
   - script: |
       echo "Installing zip utility..."
