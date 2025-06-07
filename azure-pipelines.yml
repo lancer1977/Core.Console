@@ -32,13 +32,9 @@ jobs:
       projects: '$(projectpath)'
       feedRestore: '$(nuspecServiceId)'
  
-
-  - task: DotNetCoreCLI@2
-    displayName: 'Publish Single EXE'
-    inputs:
-      command: 'publish'
-      projects: '$(projectpath)'
-      arguments:  --configuration Release --output $(outputDir) -p:SelfContained=true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:IncludeNativeLibrariesForSelfExtract=true -r win-x64
+  - script: |
+      dotnet publish '$(projectpath)'  --configuration Release --output $(outputDir) -p:SelfContained=true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:IncludeNativeLibrariesForSelfExtract=true -r win-x64
+    displayName: 'Install zip tool'
 
   - script: |
       echo "Installing zip utility..."
