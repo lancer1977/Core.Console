@@ -37,7 +37,7 @@ jobs:
     displayName: 'Publish Single EXE'
     inputs:
       command: 'publish'
-      projects: '$(Build.SourcesDirectory)/Tests/LurkHelper.csproj'
+      projects: '$(projectpath)'
       arguments: >
         --configuration Release
         --output $(outputDir)
