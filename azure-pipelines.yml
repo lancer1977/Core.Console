@@ -8,8 +8,8 @@ variables:
   githubRepo: 'lancer1977/Core.Console'  # Replace with your GitHub repo, e.g. myuser/myrepo
   releaseTag: 'v$(Build.BuildNumber)'
   releaseName: 'Release $(Build.BuildNumber)'
-  projectpath: '$(Build.SourcesDirectory)/**/LurkHelper.csproj'  
-  nuspecServiceId: '015fc12f-cd63-4ab4-8d6a-dc889e53bf70'
+  projectpath: $(Build.SourcesDirectory)/**/LurkHelper.csproj
+  nuspecServiceId: 015fc12f-cd63-4ab4-8d6a-dc889e53bf70
 trigger:
   branches:
     include:
@@ -30,7 +30,7 @@ jobs:
     inputs:
       command: 'restore'
       projects: '$(projectpath)'
-      feedRestore: '$(Nuspec.ServiceId)'
+      feedRestore: '$(nuspecServiceId)'
   - task: DotNetCoreCLI@2
     displayName: dotnet build 
     inputs:
