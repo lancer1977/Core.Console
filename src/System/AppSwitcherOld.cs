@@ -2,7 +2,7 @@
 
 namespace PolyhydraGames.Core.Console.System
 {
-    public class AppSwitcherOld : BaseSwitcher
+    public class AppSwitcherOld  
     { // Import the SetForegroundWindow function from user32.dll
 
         public static bool SwitchToApp(string appName)
@@ -15,12 +15,12 @@ namespace PolyhydraGames.Core.Console.System
             if (proc != null)
             {
                 var handle = proc.MainWindowHandle;
-                SetForegroundWindow(handle);
+                User32.SetForegroundWindow(handle);
                 return true;
             }
             else
             {
-                global::System.Console.WriteLine("Process with the name '{0}' not found.", appName);
+                SharedLogger.WriteLine($"Process with the name '{appName}' not found."  );
                 return false;
             }
         }
@@ -29,15 +29,15 @@ namespace PolyhydraGames.Core.Console.System
         {
 
             var proc = Process.GetProcessesByName(appName);
-            global::System.Console.WriteLine($"Found {proc.Length} items");
+            SharedLogger.WriteLine($"Found {proc.Length} items");
             foreach (var item in proc)
             {
                 SwitchToProcess(item);
-                global::System.Console.WriteLine(item.MainWindowTitle);
+                SharedLogger.WriteLine(item.MainWindowTitle);
 
                 await Task.Delay(TimeSpan.FromSeconds(i));
             }
-            global::System.Console.WriteLine($"Done");
+            SharedLogger.WriteLine($"Done");
         }
     }
 }

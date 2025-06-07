@@ -5,12 +5,18 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	  <SelfContained>true</SelfContained>
+	  <PublishSingleFile>true</PublishSingleFile>
+	  <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	  <!-- Optional -->
+	  <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\PolyhydraGames.Core.Console.csproj" />
-  </ItemGroup>
+ 
 	<ItemGroup>
+
+		<PackageReference Include="PolyhydraGames.Core.Console" Version="1.0.0.5" />
 
 		<PackageReference Include="Seq.Extensions.Logging" Version="8.0.0" />
 	</ItemGroup>

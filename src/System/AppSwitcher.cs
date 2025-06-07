@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace PolyhydraGames.Core.Console.System;
 
-public class AppSwitcher : BaseSwitcher
+public class AppSwitcher  
 {
     private static AppSwitcher? _instance;
     public static AppSwitcher Instance => _instance ??= new AppSwitcher();
@@ -11,7 +11,7 @@ public class AppSwitcher : BaseSwitcher
     public bool SwitchToApp(string appName)
     {
         var proc = Process.GetProcessesByName(appName)
-            .FirstOrDefault(p => p.MainWindowHandle != IntPtr.Zero && IsWindowVisible(p.MainWindowHandle));
+            .FirstOrDefault(p => p.MainWindowHandle != IntPtr.Zero && User32.IsWindowVisible(p.MainWindowHandle));
         return SwitchToProcess(proc, appName);
     }
 
@@ -20,18 +20,18 @@ public class AppSwitcher : BaseSwitcher
         if (proc != null)
         {
             var handle = proc.MainWindowHandle;
-            if (handle != IntPtr.Zero && !IsWindowVisible(handle))
+            if (handle != IntPtr.Zero && !User32.IsWindowVisible(handle))
             {
-                return SetForegroundWindow(handle);
+                return User32.SetForegroundWindow(handle);
             }
             else
             {
-                WriteLine("Valid window not found for process: " + appName);
+                SharedLogger.WriteLine("Valid window not found for process: " + appName);
             }
         }
         else
         {
-            WriteLine($"Process with the name '{appName}' not found.");
+            SharedLogger.WriteLine($"Process with the name '{appName}' not found.");
         }
         return false;
     }
@@ -42,15 +42,15 @@ public class AppSwitcher : BaseSwitcher
             .Where(p => p.MainWindowHandle != IntPtr.Zero)
             .ToList();
         //&& !IsWindowVisible(p.MainWindowHandle)
-        WriteLine($"Found {procs.Count} visible windows for '{appName}'");
+        SharedLogger.WriteLine($"Found {procs.Count} visible windows for '{appName}'");
 
         foreach (var proc in procs)
         {
             SwitchToProcess(proc, appName);
-            WriteLine($"Switched to: {proc.MainWindowTitle}");
+            SharedLogger.WriteLine($"Switched to: {proc.MainWindowTitle}");
             await Task.Delay(TimeSpan.FromSeconds(delaySeconds));
         }
 
-        WriteLine("Done");
+        SharedLogger.WriteLine("Done");
     }
 }

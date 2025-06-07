@@ -6,7 +6,6 @@ namespace PolyhydraGames.Core.Console;
 
 public class ConsoleApplication : IApp, IMenuControl, INavigationBarController
 {
-
     public IConsolePage CurrentPage { get; set; }
     private CancellationTokenSource _cts;
     public void SetNavigationBarColor(string hex = "#00263A")

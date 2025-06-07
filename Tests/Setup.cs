@@ -10,7 +10,6 @@ public static class Setup
         var config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory()) // Set the base path to the test project
             .AddJsonFile("appsettings.json")
-
             .AddUserSecrets("165e6907-cc47-4f3f-b643-07bb0ee58c03") // Use the UserSecretsId generated earlier
             .Build();
         services.AddSingleton<IConfiguration>(config);

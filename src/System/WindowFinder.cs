@@ -1,60 +1,49 @@
 ﻿using System.Diagnostics;
 using System.Text;
 
-namespace PolyhydraGames.Core.Console.System
+namespace PolyhydraGames.Core.Console.System;
+
+public static class WindowFinder  
 {
-    public class WindowFinder : BaseSwitcher
+ 
+
+    public static List<AppWindow> GetWindows(string appName)
     {
-        private static WindowFinder? _instance;
-        public static WindowFinder Instance => _instance ??= new WindowFinder();
+        var result = new List<AppWindow>();
 
-        public List<(int PID, string Title, IntPtr Handle)> GetWindows(string appName)
+        User32.EnumWindows((hWnd, lParam) =>
         {
-            var result = new List<(int PID, string Title, IntPtr Handle)>();
-
-            EnumWindows((hWnd, lParam) =>
-            {
-                if (!IsWindowVisible(hWnd))
-                    return true;
-
-                GetWindowThreadProcessId(hWnd, out int pid);
-                var proc = Process.GetProcessById(pid);
-
-                if (!proc.ProcessName.Equals(appName, StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
-
-                var sb = new StringBuilder(1024);
-                GetWindowText(hWnd, sb, sb.Capacity);
-                var title = sb.ToString();
-
-                if (!string.IsNullOrWhiteSpace(title))
-                {
-                    result.Add((pid, title, hWnd));
-                }
-
+            if (!User32.IsWindowVisible(hWnd))
                 return true;
-            }, IntPtr.Zero);
 
-            return result;
-        }
+            User32.GetWindowThreadProcessId(hWnd, out int pid);
+            var proc = Process.GetProcessById(pid);
 
-
-
-        public void SwitchWindows(string appName, int delaySeconds = 2)
-        {
-            var edgeWindows = GetWindows(appName);
-            global::System.Console.WriteLine($"Found {edgeWindows.Count} Edge windows.");
-
-            foreach (var win in edgeWindows)
+            if (!proc.ProcessName.Equals(appName, StringComparison.OrdinalIgnoreCase))
             {
-                WriteLine($"Bringing to front: [{win.PID}] {win.Title}");
-                SetForegroundWindow(win.Handle);
-                Thread.Sleep(TimeSpan.FromSeconds(delaySeconds));
+                return true;
             }
-        }
 
+            var sb = new StringBuilder(1024);
+            User32.GetWindowText(hWnd, sb, sb.Capacity);
+            var title = sb.ToString();
 
+            if (!string.IsNullOrWhiteSpace(title))
+            {
+                result.Add(new AppWindow(pid, title, hWnd));
+            }
+
+            return true;
+        }, IntPtr.Zero);
+
+        return result;
     }
+
+    public static void SwitchToWindow(AppWindow window)
+    {
+        SharedLogger.WriteLine($"Bringing to front: [{window.PID}] {window.Title}");
+        User32.SetForegroundWindow(window.Handle);
+    }
+
+
 }
