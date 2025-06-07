@@ -1,4 +1,4 @@
-﻿namespace LurkHelper;
+﻿namespace LurkHelper.Interfaces;
 
 public interface IApplicationConfig
 {
@@ -6,4 +6,5 @@ public interface IApplicationConfig
     int WindowSwapDelay { get;  }
     string AppName { get;  }
     List<string> Lurks { get;  }
+    string BrowserExecutable { get; }
 }

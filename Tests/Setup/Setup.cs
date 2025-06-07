@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using LurkHelper.Interfaces;
+using LurkHelper.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace LurkHelper;
+namespace LurkHelper.Setup;
 
 public static class Setup
 {
