@@ -38,14 +38,7 @@ jobs:
     inputs:
       command: 'publish'
       projects: '$(projectpath)'
-      arguments: >
-        --configuration Release
-        --output $(outputDir)
-        -p:SelfContained=true
-        -p:PublishSingleFile=true
-        -p:PublishTrimmed=true
-        -p:IncludeNativeLibrariesForSelfExtract=true
-        -p:RuntimeIdentifier=win-x64
+      arguments:  --configuration Release --output $(outputDir) -p:SelfContained=true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:IncludeNativeLibrariesForSelfExtract=true -r win-x64
 
   - script: |
       echo "Installing zip utility..."
