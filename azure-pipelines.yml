@@ -8,7 +8,7 @@ variables:
   githubRepo: 'lancer1977/Core.Console'  # Replace with your GitHub repo, e.g. myuser/myrepo
   releaseTag: 'v$(Build.BuildNumber)'
   releaseName: 'Release $(Build.BuildNumber)'
-  projectpath: $(Build.SourcesDirectory)/**/LurkHelper.csproj
+  projectpath: $(Build.SourcesDirectory)/Tests/LurkHelper.csproj
   nuspecServiceId: 015fc12f-cd63-4ab4-8d6a-dc889e53bf70
 trigger:
   branches:
