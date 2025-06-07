@@ -32,10 +32,10 @@ jobs:
       projects: '$(projectpath)'
       feedRestore: '$(nuspecServiceId)'
   - task: DotNetCoreCLI@2
-    displayName: dotnet build 
+    displayName: dotnet publish 
     inputs:
       projects: '$(projectpath)'      
-      arguments: --configuration Release --output $(outputDir) -p:SelfContained=true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:IncludeNativeLibrariesForSelfExtract=true -p:RuntimeIdentifier=win-x64
+      arguments: --configuration Release --output $(outputDir) -p:SelfContained=true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:IncludeNativeLibrariesForSelfExtract=true -r win-x64
     # Change to win-x64 or osx-x64 if needed
 
   - script: |
