@@ -39,7 +39,7 @@ jobs:
   - script: |
       echo "Installing zip utility..."
       apt-get update && apt-get install -y zip
-      displayName: 'Install zip tool'
+    displayName: 'Install zip tool'
   - task: ArchiveFiles@2
     displayName: 'Zip published output'
     inputs:
