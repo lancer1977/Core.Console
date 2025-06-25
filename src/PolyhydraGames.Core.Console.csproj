@@ -18,11 +18,11 @@
     <ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" /> 
-        <PackageReference Include="PolyhydraGames.Core.Global" Version="1.0.3.8" />
-        <PackageReference Include="PolyhydraGames.Core.Interfaces" Version="2.0.0.41" />
+        <PackageReference Include="PolyhydraGames.Core.Global" Version="1.0.3.9" />
+        <PackageReference Include="PolyhydraGames.Core.Interfaces" Version="2.0.0.43" />
         <PackageReference Include="PolyhydraGames.Core.IOC" Version="1.0.1.1" />
-        <PackageReference Include="PolyhydraGames.Core.ReactiveUI" Version="1.0.0.48" />
-        <PackageReference Include="PolyhydraGames.Extensions" Version="2.1.1.52" />
+        <PackageReference Include="PolyhydraGames.Core.ReactiveUI" Version="1.0.0.49" />
+        <PackageReference Include="PolyhydraGames.Extensions" Version="2.1.1.56" />
         <PackageReference Include="ReactiveUI" Version="20.1.63" />
         <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
         <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
