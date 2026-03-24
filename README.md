@@ -87,3 +87,9 @@ public class MainPage : Page
 ## Samples
 
 - **SampleHost** (`samples/SampleHost/`) - A minimal working console app demonstrating DI setup, page patterns, and menu handling.
+
+
+## 📖 Documentation
+Detailed documentation can be found in the following sections:
+- [Feature Index](./docs/features/README.md)
+- [Core Capabilities](./docs/features/core-capabilities.md)
