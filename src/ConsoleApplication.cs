@@ -9,7 +9,7 @@ namespace PolyhydraGames.Core.Console;
 public class ConsoleApplication : IApp, IMenuControl, INavigationBarController, IDisposable
 {
     public IConsolePage CurrentPage { get; set; }
-    private CancellationTokenSource? _cts;
+    private CancellationTokenSource? _cts = new();
     private bool _disposed;
 
     public CancellationToken Token => _cts?.Token ?? CancellationToken.None;
@@ -40,7 +40,10 @@ public class ConsoleApplication : IApp, IMenuControl, INavigationBarController, 
 
     public async Task SetMainPage(Page view)
     {
-        _cts = new CancellationTokenSource();
+        if (_cts == null || _cts.IsCancellationRequested)
+        {
+            _cts = new CancellationTokenSource();
+        }
         
         // Register Ctrl+C handler for graceful shutdown
         SysConsole.CancelKeyPress += OnCancelKeyPress;

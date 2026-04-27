@@ -1,95 +1,70 @@
 # Core.Console
 
-PolyhydraGames.Core.Console provides a structured way to build console applications with dependency injection, configuration, and logging support.
+[![Build Status](https://img.shields.io/github/actions/workflow/user/lancer1977/Core.Console/.github/workflows/ci.yml/badge.svg)](https://github.com/lancer1977/Core.Console/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Build Notifications
+## 🚀 Overview
+`Core.Console` provides a structured framework for building .NET console applications. It integrates dependency injection, configuration, logging, and a page-based navigation pattern using Spectre.Console for rich ANSI rendering.
 
-Build notifications are sent to Discord via Azure DevOps pipeline. To configure:
+## ✨ Key Features
+*   **Console UI Framework**: Enables building interactive console applications.
+*   **Dependency Injection**: Built-in support for `Microsoft.Extensions.DependencyInjection`.
+*   **Page Pattern**: Structured views with menu support for navigation.
+*   **Spectre.Console Integration**: Leverages Spectre.Console for advanced ANSI rendering and UI elements.
+*   **ReactiveUI Support**: Integrates ReactiveUI for managing complex state transitions in Console Pages.
+*   **Build Notifications**: Configurable Discord notifications via Azure DevOps pipeline secrets.
 
-1. Go to **Azure DevOps > Pipelines > Library**
-2. Add or edit the **Discord** variable group:
-   - `Discord.ChannelId` - The Discord channel ID for notifications
-   - `Discord.WebhookKey` - The Discord webhook secret key
+## 🏗️ Architecture
+A Console UI Framework with DI and Navigation. Key components include `ConsoleApplication` for the event loop, a `Page` pattern for structured views, and `RegisterCore()` for DI setup. UI elements are encapsulated within Display services for testability.
 
-**Note:** These values are stored as secure variables and are NOT committed to the repository.
+### 🛠️ Technology Stack
+*   **Language**: C#
+*   **Framework**: .NET 8+
+*   **UI Library**: Spectre.Console
+*   **Reactive**: ReactiveUI + Fody
+*   **Testing**: NUnit + Moq
+*   **Project Structure**: Single `.sln` file found; `.csproj` files were absent, suggesting reliance on global build properties or older project formats.
 
-## Quick Start
+## 🚦 Getting Started
 
-Check out the [Sample Host Application](./samples/SampleHost/) for a complete working example.
+### Prerequisites
+*   .NET 8 SDK (or compatible version)
+*   An IDE that supports C# development (e.g., VS Code, Visual Studio)
 
-### Minimal Example
+### Installation
+```bash
+# Clone the repository
+git clone git@github.com:lancer1977/Core.Console.git
+cd Core.Console
 
-```csharp
-using Microsoft.Extensions.DependencyInjection;
-using PolyhydraGames.Core.Console;
-using PolyhydraGames.Core.Console.Display;
-using PolyhydraGames.Core.Console.Interfaces;
-using PolyhydraGames.Core.Console.Setup;
-
-// 1. Create service collection
-var services = new ServiceCollection();
-
-// 2. Register Core.Console services
-services.RegisterCore();
-
-// 3. Add your own services
-services.AddSingleton<IMyService, MyService>();
-
-// 4. Register your pages
-services.AddSingleton<MainPage>();
-
-// 5. Build the service provider
-var provider = services.BuildServiceProvider();
-
-// 6. Get the app and page
-var app = provider.GetRequiredService<IApp>();
-var mainPage = provider.GetRequiredService<MainPage>();
-
-// 7. Run
-await app.SetMainPage(mainPage);
+# Restore NuGet packages (likely handled by global build properties/SLN file)
+dotnet restore
 ```
 
-### Creating a Page
+## 📖 Usage & Education
+The project provides a minimal example demonstrating DI setup, page creation, and menu handling. Key steps include:
+1.  Creating a `ServiceCollection`.
+2.  Registering Core services using `services.RegisterCore()`.
+3.  Adding custom services and pages.
+4.  Building the `ServiceProvider` and running the application.
 
-```csharp
-public class MainPage : Page
-{
-    public MainPage(IMyService myService)
-    {
-        Title = "My App";
-        Details = "Description shown in header";
-        
-        // Menu items automatically handle user input
-        Menu = new List<ConsoleMenuItem>
-        {
-            new("1", "Do Something", DoSomethingAsync),
-            new("2", "Exit", ExitAsync),
-        };
-    }
-    
-    private async Task DoSomethingAsync()
-    {
-        // Use AnsiConsole from Spectre.Console for input/output
-        var input = AnsiConsole.Ask<string>("Enter something: ");
-        LastMesage = $"You entered: {input}";
-        await Task.CompletedTask;
-    }
-    
-    private async Task ExitAsync()
-    {
-        LastMesage = "Goodbye!";
-        // Press Ctrl+C to exit, or implement custom exit logic
-        await Task.CompletedTask;
-    }
-}
-```
+Refer to the [Sample Host Application](./samples/SampleHost/) for a complete example.
 
-## Samples
+## 🌐 Deployment & Hosting
+*   **Repo**: [Core.Console](https://github.com/lancer1977/Core.Console)
+*   **Hosting Platform**: GitHub.
+*   **Build Notifications**: Discord via Azure DevOps secrets.
 
-- **SampleHost** (`samples/SampleHost/`) - A minimal working console app demonstrating DI setup, page patterns, and menu handling.
+## 📦 Packages & Dependencies
+*   **NuGet**: Package name and details TBD, as `.csproj` files were not found. Likely depends on `Spectre.Console` and `ReactiveUI`.
+*   **Local Projects**: `Core.Interfaces`, `Core.Extensions` (Likely dependencies).
 
+## 🔗 Related Projects
+*   Other `Core.*` libraries within the Polyhydra Games ecosystem.
 
-## 📖 Documentation
-Detailed documentation can be found in the following sections:
-- [Feature Index](./docs/features/README.md)
-- [Core Capabilities](./docs/features/core-capabilities.md)
+## 📚 Documentation & Resources
+*   **Features**: [Docs/Features](./docs/features/README.md)
+*   **CI/CD**: [GitHub Actions](https://github.com/lancer1977/Core.Console/actions)
+
+---
+*This README was generated based on project metadata and description.*
