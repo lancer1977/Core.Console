@@ -2,14 +2,16 @@
 
 ## CI/CD Pipeline
 
-The CI/CD pipeline is defined in `build.yml` and uses an Azure DevOps pipeline.
+The current source of truth is `build.yml`, an Azure DevOps pipeline.
+A GitHub Actions parity draft is documented in `docs/roadmap/github_actions.md`.
+
+The migration notes deliberately stop short of enabling package publication until the GitHub-side secrets and variables are confirmed.
 
 ### Discord Webhook Integration
 
-The pipeline used to send a notification to a Discord channel upon successful build completion. That step is currently disabled in `build.yml`.
+The old Discord notification step is documented as disabled in `build.yml`.
+If that notification returns in GitHub Actions, map the secret key into a GitHub secret or environment variable first, then wire the notification step to read from that secret.
 
-If you re-enable it later, create a pipeline variable in Azure DevOps named `Discord.WebhookKey` and set its value to the secret key part of your Discord webhook URL.
+For example, if the webhook URL is `https://discord.com/api/webhooks/123456789/abcdefg`, the secret should store the key portion (`abcdefg`) and never the full webhook URL.
 
-For example, if your webhook URL is `https://discord.com/api/webhooks/123456789/abcdefg`, then the value of `Discord.WebhookKey` should be `abcdefg`.
-
-**Important:** Make sure to mark this variable as a secret in Azure DevOps to prevent it from being exposed in logs.
+**Important:** Keep the notification secret out of source control and do not publish the package pipeline until the feed and webhook mappings are approved.

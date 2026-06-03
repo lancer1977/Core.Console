@@ -3,6 +3,15 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/user/lancer1977/Core.Console/.github/workflows/ci.yml/badge.svg)](https://github.com/lancer1977/Core.Console/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Tags
+
+- dotnet
+- core
+- core-console
+- docs
+- testing
+- console
+
 ## 🚀 Overview
 `Core.Console` provides a structured framework for building .NET console applications. It integrates dependency injection, configuration, logging, and a page-based navigation pattern using Spectre.Console for rich ANSI rendering.
 
