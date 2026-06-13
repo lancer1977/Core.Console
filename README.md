@@ -75,5 +75,9 @@ Refer to the [Sample Host Application](./samples/SampleHost/) for a complete exa
 *   **Features**: [Docs/Features](./docs/features/README.md)
 *   **CI/CD**: [GitHub Actions](https://github.com/lancer1977/Core.Console/actions)
 
+## Docs
+
+- [Roadmap Index](./docs/roadmaps/README.md)
+
 ---
 *This README was generated based on project metadata and description.*
