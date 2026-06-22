@@ -21,7 +21,7 @@
 *   **Page Pattern**: Structured views with menu support for navigation.
 *   **Spectre.Console Integration**: Leverages Spectre.Console for advanced ANSI rendering and UI elements.
 *   **ReactiveUI Support**: Integrates ReactiveUI for managing complex state transitions in Console Pages.
-*   **Build Notifications**: Configurable Discord notifications via Azure DevOps pipeline secrets.
+*   **Build Notifications**: Not currently wired into the GitHub Actions workflow.
 
 ## 🏗️ Architecture
 A Console UI Framework with DI and Navigation. Key components include `ConsoleApplication` for the event loop, a `Page` pattern for structured views, and `RegisterCore()` for DI setup. UI elements are encapsulated within Display services for testability.
@@ -62,7 +62,7 @@ Refer to the [Sample Host Application](./samples/SampleHost/) for a complete exa
 ## 🌐 Deployment & Hosting
 *   **Repo**: [Core.Console](https://github.com/lancer1977/Core.Console)
 *   **Hosting Platform**: GitHub.
-*   **Build Notifications**: Discord via Azure DevOps secrets.
+*   **Build Notifications**: Not currently wired into the GitHub Actions workflow.
 
 ## 📦 Packages & Dependencies
 *   **NuGet**: Package name and details TBD, as `.csproj` files were not found. Likely depends on `Spectre.Console` and `ReactiveUI`.
