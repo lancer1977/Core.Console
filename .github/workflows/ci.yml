@@ -5,11 +5,15 @@ on:
     branches: [main]
     paths:
       - "src/**"
+      - "test/**"
+      - "samples/**"
       - ".github/workflows/ci.yml"
   pull_request:
     branches: [main]
     paths:
       - "src/**"
+      - "test/**"
+      - "samples/**"
       - ".github/workflows/ci.yml"
 
 jobs:
@@ -42,4 +46,5 @@ jobs:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
       - run: dotnet restore PolyhydraGames.Core.Console.sln --configfile NuGet.Config
       - run: dotnet build PolyhydraGames.Core.Console.sln --configuration Release --no-restore
+      - run: dotnet test PolyhydraGames.Core.Console.sln --configuration Release --no-restore --no-build --verbosity minimal
       - run: dotnet pack src/PolyhydraGames.Core.Console.csproj --configuration Release --no-build --output ./artifacts -p:PackageVersion=${{ github.run_number }}

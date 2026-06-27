@@ -32,7 +32,7 @@ A Console UI Framework with DI and Navigation. Key components include `ConsoleAp
 *   **UI Library**: Spectre.Console
 *   **Reactive**: ReactiveUI + Fody
 *   **Testing**: NUnit + Moq
-*   **Project Structure**: Single `.sln` file found; `.csproj` files were absent, suggesting reliance on global build properties or older project formats.
+*   **Project Structure**: `PolyhydraGames.Core.Console.sln` with library, sample host, and NUnit test projects.
 
 ## 🚦 Getting Started
 
@@ -46,9 +46,21 @@ A Console UI Framework with DI and Navigation. Key components include `ConsoleAp
 git clone git@github.com:lancer1977/Core.Console.git
 cd Core.Console
 
-# Restore NuGet packages (likely handled by global build properties/SLN file)
-dotnet restore
+# Restore NuGet packages
+dotnet restore PolyhydraGames.Core.Console.sln
 ```
+
+## Validation
+
+Use the solution-level command as the native validation path:
+
+```bash
+dotnet test PolyhydraGames.Core.Console.sln --configuration Release --verbosity minimal
+dotnet pack src/PolyhydraGames.Core.Console.csproj --configuration Release --no-build --output ./artifacts
+dotnet list PolyhydraGames.Core.Console.sln package --outdated
+```
+
+The dependency audit currently reports only `SixLabors.ImageSharp` 3.1.12 -> 4.0.0. The project pins ImageSharp 3.x intentionally because ImageSharp 4.x requires SixLabors licensing configuration before adoption.
 
 ## 📖 Usage & Education
 The project provides a minimal example demonstrating DI setup, page creation, and menu handling. Key steps include:
@@ -65,7 +77,7 @@ Refer to the [Sample Host Application](./samples/SampleHost/) for a complete exa
 *   **Build Notifications**: Not currently wired into the GitHub Actions workflow.
 
 ## 📦 Packages & Dependencies
-*   **NuGet**: Package name and details TBD, as `.csproj` files were not found. Likely depends on `Spectre.Console` and `ReactiveUI`.
+*   **NuGet**: `PolyhydraGames.Core.Console`.
 *   **Local Projects**: `Core.Interfaces`, `Core.Extensions` (Likely dependencies).
 
 ## 🔗 Related Projects
